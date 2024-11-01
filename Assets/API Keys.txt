@@ -3,3 +3,6 @@ AUb4wQf/////AAABmRFHwhcIf05fvzrO1j7xLi5D/eFFtmnSYXI7iBTO9Ylm8iyzXN5JYOEFkl5Vfztf
 
 Google Vision:
 AIzaSyAxQ1eUHUXawHj3Lj3OzfrxE4JpXlzpgp0
+
+Google Text-to-Speech:
+AIzaSyDbtpSgtalVoaxPfqXcED-VByff07WKiro

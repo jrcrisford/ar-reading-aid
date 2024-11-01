@@ -97,14 +97,14 @@ public class VuforiaTextRecogniser : MonoBehaviour
             string mainText = response.responses[0].textAnnotations[0].description;
             resultText.text = mainText;             // Update tmp Text object with recognised text
             storedResultText = mainText;            // Save recognised text for external access
-            Debug.Log("Recognized Text: " + mainText);
+            Debug.Log("Recognised Text: " + mainText);
         }
         else
         {
             // Display error message and clear stored result if no text was recognised
             resultText.text = "No text found.";     
             storedResultText = "";
-            Debug.Log("No text recognized.");
+            Debug.Log("No text recognised.");
         }
 
         // Reset flag to allow new requests
