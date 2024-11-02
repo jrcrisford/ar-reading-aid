@@ -1,0 +1,5 @@
+C:/Github Repositories/AT5-AR-Reading-Aid-KIT208/.utmp/RelWithDebInfo/4b695r5u/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Github Repositories/AT5-AR-Reading-Aid-KIT208/.utmp/RelWithDebInfo/4b695r5u/arm64-v8a/CMakeFiles/rebuild_cache.dir
+C:/Github Repositories/AT5-AR-Reading-Aid-KIT208/.utmp/RelWithDebInfo/4b695r5u/arm64-v8a/GameActivity/CMakeFiles/game.dir
+C:/Github Repositories/AT5-AR-Reading-Aid-KIT208/.utmp/RelWithDebInfo/4b695r5u/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+C:/Github Repositories/AT5-AR-Reading-Aid-KIT208/.utmp/RelWithDebInfo/4b695r5u/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
