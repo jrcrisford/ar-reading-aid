@@ -1,0 +1,2 @@
+C:\Github Repositories\AT5-AR-Reading-Aid-KIT208\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\Github Repositories\AT5-AR-Reading-Aid-KIT208\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

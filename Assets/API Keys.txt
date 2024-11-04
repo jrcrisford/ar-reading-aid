@@ -1,0 +1,8 @@
+Vuforia:
+AUb4wQf/////AAABmRFHwhcIf05fvzrO1j7xLi5D/eFFtmnSYXI7iBTO9Ylm8iyzXN5JYOEFkl5VfztfdzgtR8o2tau85vNfOIx7fcDPeM39vdmWcgKJ3Vvf9Ld7Li7AH1tz5pGFUDMlKovNLT+2PaPWvTEuhpteHql8E/qB3gv/IFe+VBLVAl96c0lo7SZ5vCPCksQywgilE+aK4oOU2PZx3qGvb+tkI+FpDeg4mt7YGAYrZoep6MUu3nQkqURbZNz6+KCIZhnHNWNklaeDMi7gEiGvZsmCb2r38Bu2VcAQldbD7T1w7NsqIQ7oxffWD3ZnLUUGep3sL2JHRpX+nM+rrLF0ioO/E7uhxNv3SQ3zJeSEE2Ri+a5VeIjq
+
+Google Vision:
+AIzaSyAxQ1eUHUXawHj3Lj3OzfrxE4JpXlzpgp0
+
+Google Text-to-Speech:
+AIzaSyDbtpSgtalVoaxPfqXcED-VByff07WKiro
