@@ -8,7 +8,7 @@ public class TextToSpeech : MonoBehaviour
 {
     private string apiKey = "AIzaSyDbtpSgtalVoaxPfqXcED-VByff07WKiro";      // API key for accessing Google Text-to-Speech service
     public AudioSource audioSource;                                         // Reference to the AudioSource component to play audio
-    public VuforiaTextRecogniser textRecogniser;                            // Reference to a VuforiaTextRecogniser script that stores recognised text
+    public TextRecogniser textRecogniser;                            // Reference to a VuforiaTextRecogniser script that stores recognised text
 
     // Method to convert recognised text to speech using Google Text-to-Speech
     public void ConvertTextToSpeech()
