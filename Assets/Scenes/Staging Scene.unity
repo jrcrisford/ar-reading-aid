@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 132353515}
   - component: {fileID: 132353514}
   m_Layer: 5
-  m_Name: LineSpacingLabel  (1)
+  m_Name: LineSpacingLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3773,7 +3773,19 @@ MonoBehaviour:
   m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1383069210}
+        m_TargetAssemblyTypeName: TextManager, Assembly-CSharp
+        m_MethodName: SetLineSpacing
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1383069209
 GameObject:
   m_ObjectHideFlags: 0
@@ -3803,7 +3815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2100037b31adcb4c83c745e2b99ea1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainText: {fileID: 1884415358}
+  mainText: {fileID: 387172875}
   openDyslexic: {fileID: 11400000, guid: cfbd81069e17008448bfdeffef3fc311, type: 2}
   lexieReadable: {fileID: 11400000, guid: a8dfd174e9bdf684daaac7e991e32c34, type: 2}
   tiresias: {fileID: 11400000, guid: 54484159b89279147bbb2b7e91ff69c0, type: 2}
@@ -5733,7 +5745,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1884415357
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5773,30 +5785,29 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Lorem Ipsum Dolorei
+  m_text: 'Lorem Ipsum Dolor
 
-    Lorem Ipsum Dolorei
+    Lorem Ipsum Dolor
 
-    Lorem Ipsum Dolorei
-
-    Lorem
-    Ipsum Dolorei
-
-    Lorem Ipsum Dolorei
-
-    Lorem Ipsum Dolorei
-
-    Lorem Ipsum
-    Dolorei
-
-    Lorem Ipsum Dolorei
-
-    Lorem Ipsum Dolorei
-
-    Lorem Ipsum Dolorei
+    Lorem Ipsum Dolor
 
     Lorem
-    Ipsum Dolorei
+    Ipsum Dolor
+
+    Lorem Ipsum Dolor
+
+    Lorem Ipsum Dolor
+
+    Lorem Ipsum Dolor
+
+    Lorem
+    Ipsum Dolor
+
+    Lorem Ipsum Dolor
+
+    Lorem Ipsum Dolor
+
+    Lorem Ipsum Dolor
 
 '
   m_isRightToLeft: 0
