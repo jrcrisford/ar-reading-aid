@@ -4,7 +4,7 @@ using System.Text;
 using UnityEngine.Networking;
 using TMPro;
 
-public class VuforiaTextRecogniser : MonoBehaviour
+public class TextRecogniser : MonoBehaviour
 {
     private string apiKey = "AIzaSyAxQ1eUHUXawHj3Lj3OzfrxE4JpXlzpgp0";  // API key for Google Vision service
     private bool requestSent = false;                                   // Prevents multiple requests from being sent simultaneously
@@ -97,6 +97,10 @@ public class VuforiaTextRecogniser : MonoBehaviour
             string mainText = response.responses[0].textAnnotations[0].description;
             resultText.text = mainText;             // Update tmp Text object with recognised text
             storedResultText = mainText;            // Save recognised text for external access
+
+            // Notify WordSelector that the text has been updated
+            GetComponent<WordSelector>().OnTextUpdated();
+
             Debug.Log("Recognised Text: " + mainText);
         }
         else
