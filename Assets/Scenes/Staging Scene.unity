@@ -2415,7 +2415,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1813201817}
+      - m_Target: {fileID: 1383069213}
         m_TargetAssemblyTypeName: TextRecogniser, Assembly-CSharp
         m_MethodName: CaptureAndProcessText
         m_Mode: 1
@@ -2696,7 +2696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 2015741758}
-  textRecogniser: {fileID: 1813201817}
+  textRecogniser: {fileID: 0}
 --- !u!4 &774305034
 Transform:
   m_ObjectHideFlags: 0
@@ -3914,6 +3914,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1383069211}
   - component: {fileID: 1383069210}
+  - component: {fileID: 1383069213}
+  - component: {fileID: 1383069212}
   m_Layer: 0
   m_Name: TextManager
   m_TagString: Untagged
@@ -3934,6 +3936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainText: {fileID: 387172875}
+  exampleText: {fileID: 578132825}
   openDyslexic: {fileID: 11400000, guid: cfbd81069e17008448bfdeffef3fc311, type: 2}
   lexieReadable: {fileID: 11400000, guid: a8dfd174e9bdf684daaac7e991e32c34, type: 2}
   tiresias: {fileID: 11400000, guid: 54484159b89279147bbb2b7e91ff69c0, type: 2}
@@ -3953,6 +3956,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1383069212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383069209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc813fbcaacd83f4fafcb57d26b97938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMeshPro: {fileID: 387172875}
+--- !u!114 &1383069213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383069209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2b981258f759864cb1d8a6b600c3200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textCaptureRegion: {fileID: 552529988}
+  resultText: {fileID: 387172875}
+  storedResultText: 
 --- !u!1 &1384223886
 GameObject:
   m_ObjectHideFlags: 0
@@ -5693,67 +5724,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797245452}
   m_CullTransparentMesh: 1
---- !u!1 &1813201814
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1813201816}
-  - component: {fileID: 1813201817}
-  - component: {fileID: 1813201815}
-  m_Layer: 0
-  m_Name: TextController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1813201815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1813201814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc813fbcaacd83f4fafcb57d26b97938, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textMeshPro: {fileID: 387172875}
---- !u!4 &1813201816
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1813201814}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1813201817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1813201814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2b981258f759864cb1d8a6b600c3200, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textCaptureRegion: {fileID: 552529988}
-  resultText: {fileID: 387172875}
-  storedResultText: 
 --- !u!1 &1865104882
 GameObject:
   m_ObjectHideFlags: 0
@@ -7194,8 +7164,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 410087041}
   - {fileID: 398158579}
+  - {fileID: 1383069211}
   - {fileID: 774305034}
   - {fileID: 2015741759}
-  - {fileID: 1813201816}
   - {fileID: 1634957484}
-  - {fileID: 1383069211}
