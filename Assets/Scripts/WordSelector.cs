@@ -7,6 +7,7 @@ public class WordSelector : MonoBehaviour
     private string originalText;            // To store original text for reset
     private int currentWordIndex = -1;      // Current highlighted word index
     private bool isTextUpdated = false;     // Flag to track text updates
+    private string selectedWord; // Variable to store the selected word
 
     void Start()
     {
@@ -59,6 +60,10 @@ public class WordSelector : MonoBehaviour
         currentWordIndex = wordIndex;
 
         TMP_WordInfo wordInfo = textMeshPro.textInfo.wordInfo[wordIndex];
+
+        // Store the selected word
+        selectedWord = wordInfo.GetWord();
+
         string highlightedText = originalText.Substring(0, wordInfo.firstCharacterIndex)
                                + "<mark=#FF00FF50><color=#FFFFFF>"
                                + wordInfo.GetWord()
@@ -73,5 +78,10 @@ public class WordSelector : MonoBehaviour
     public void OnTextUpdated()
     {
         isTextUpdated = true;
+    }
+
+    public string GetSelectedWord()
+    {
+        return selectedWord;
     }
 }
