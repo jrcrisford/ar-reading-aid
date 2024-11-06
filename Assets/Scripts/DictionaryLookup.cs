@@ -1,97 +1,109 @@
+using System.Collections;
 using UnityEngine;
 using TMPro;
-using System.Collections;
 using UnityEngine.Networking;
 using System.Collections.Generic;
 
 public class DictionaryLookup : MonoBehaviour
 {
-    public WordSelector wordSelector;   // Reference to the WordSelector script
-    public TMP_Text definitionText;     // TMP Text to display the definition
-    private string apiKey = "8d142832-5450-4d2f-9294-152a502e87a3";
-    private string apiUrl = "https://www.dictionaryapi.com/api/v3/references/collegiate/json/";
+    // Text component to display the result
+    [SerializeField] private TMP_Text resultText;
+    // API key for Merriam-Webster Dictionary API
+    [SerializeField] private string apiKey = "8d142832-5450-4d2f-9294-152a502e87a3";
+    // Base URL for dictionary API
+    [SerializeField] private string apiUrl = "https://www.dictionaryapi.com/api/v3/references/collegiate/json/";
+    // Reference to WordSelector component
+    private WordSelector wordSelector;
 
-    // Called when the dictionary button is pressed
-    public void OnDictionaryButtonPressed()
+    private void Awake()
     {
+        // Initialize WordSelector component
+        wordSelector = GetComponent<WordSelector>();
+        Debug.Log("DictionaryLookup script initialised. WordSelector component retrieved.");
+    }
+
+    public void OnLookupButtonPressed()
+    {
+        // Retrieve selected word from WordSelector
         string selectedWord = wordSelector.GetSelectedWord();
+        Debug.Log($"Button pressed. Selected word: {selectedWord}");
+
+        // Check if a word is selected, then start fetching its definition
         if (!string.IsNullOrEmpty(selectedWord))
         {
-            StartCoroutine(LookupWord(selectedWord));
+            Debug.Log("Starting coroutine to fetch definition.");
+            StartCoroutine(FetchDefinition(selectedWord));
         }
         else
         {
-            definitionText.text = "Please select a word first.";
+            // Display message if no word is selected
+            Debug.LogWarning("No word selected.");
+            resultText.text = "No word selected.";
         }
     }
 
-    private IEnumerator LookupWord(string word)
+    private IEnumerator FetchDefinition(string word)
     {
+        // Construct the API request URL
         string requestUrl = $"{apiUrl}{word}?key={apiKey}";
-        UnityWebRequest request = UnityWebRequest.Get(requestUrl);
+        Debug.Log($"Fetching definition from URL: {requestUrl}");
 
-        yield return request.SendWebRequest();
-
-        if (request.result == UnityWebRequest.Result.Success)
+        // Send a GET request to the dictionary API
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(requestUrl))
         {
-            // Process the response to extract the definition
-            string jsonResponse = request.downloadHandler.text;
-            ProcessDictionaryResponse(jsonResponse);
-        }
-        else
-        {
-            definitionText.text = "Failed to retrieve definition. Please try again.";
-        }
-    }
+            // Wait for response
+            yield return webRequest.SendWebRequest();
 
-    private void ProcessDictionaryResponse(string jsonResponse)
-    {
-        // Parse the JSON response as an array
-        MerriamWebsterResponse[] definitions = JsonUtility.FromJson<MerriamWebsterResponseArrayWrapper>($"{{\"items\":{jsonResponse}}}").items;
-
-        // Initialize a list to hold all definitions
-        List<string> allDefinitions = new List<string>();
-
-        // Iterate through each JSON entry to parse and gather definitions
-        foreach (var definition in definitions)
-        {
-            if (definition != null && definition.shortdef.Length > 0)
+            // Check for connection or protocol errors
+            if (webRequest.result == UnityWebRequest.Result.ConnectionError || webRequest.result == UnityWebRequest.Result.ProtocolError)
             {
-                // Concatenate definitions from this entry
-                string combinedDefinitions = string.Join("; ", definition.shortdef);
-                allDefinitions.Add(combinedDefinitions);
+                Debug.LogError($"Error fetching definition: {webRequest.error}");
+                resultText.text = $"Error: {webRequest.error}";
+            }
+            else
+            {
+                Debug.Log("Definition fetched successfully. Processing response.");
+                ProcessResponse(webRequest.downloadHandler.text);   // Process the JSON response if successful
             }
         }
+    }
 
-        if (allDefinitions.Count > 0)
+    private void ProcessResponse(string jsonResponse)
+    {
+        Debug.Log("Processing JSON response.");
+        Debug.Log($"Raw JSON response: {jsonResponse}");
+
+        // Deserialize the JSON response to get definitions
+        List<MerriamWebsterResponse> definitions = JsonUtility.FromJson<Wrapper>($"{{\"items\":{jsonResponse}}}").items;
+
+        // Check if definitions exist and display them
+        if (definitions != null && definitions.Count > 0 && definitions[0].shortdef.Length > 0)
         {
-            // Display all collected definitions
-            definitionText.text = "Definitions: " + string.Join("\n\n", allDefinitions);
-
-            // Log all definitions to the console
-            Debug.Log("Retrieved Definitions: " + string.Join("; ", allDefinitions));
+            // Concatenate all definitions and display in resultText
+            string allDefinitions = string.Join("\n", definitions[0].shortdef);
+            Debug.Log($"Definition found: {allDefinitions}");
+            resultText.text = allDefinitions;
         }
         else
         {
-            definitionText.text = "No definitions found.";
-            Debug.Log("No definitions found.");
+            // Display message if no definitions are found
+            Debug.LogWarning("Definition not found in the response.");
+            resultText.text = "Definition not found.";
         }
     }
 
-    // Wrapper class for deserializing JSON arrays with JsonUtility
-    [System.Serializable]
-    private class MerriamWebsterResponseArrayWrapper
-    {
-        public MerriamWebsterResponse[] items;
-    }
 }
 
+// Wrapper class for deserializing the JSON response into a list
+[System.Serializable]
+public class Wrapper
+{
+    public List<MerriamWebsterResponse> items;
+}
 
-
-// Classes to parse Merriam-Webster API response
+// Class representing the structure of each dictionary entry
 [System.Serializable]
 public class MerriamWebsterResponse
 {
-    public string meta;
-    public string[] shortdef;
+    public string[] shortdef;   // Array of short definitions
 }

@@ -13,6 +13,11 @@ public class TextRecogniser : MonoBehaviour
     public TMP_Text resultText;                                         // Displays recognised text on the UI
     public string storedResultText = "";                                // Stores recognised text for use by other scripts
 
+    private void Start()
+    {
+        storedResultText = resultText.text;
+    }
+
     // When triggered initiates a text capture and recognition
     public void CaptureAndProcessText()
     {
